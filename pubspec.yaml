@@ -1,5 +1,5 @@
 name: flutter_performance_monitor
-description: "A new Flutter package project."
+description: "A developer tool for monitoring app performance in real-time."
 version: 0.0.1
 homepage: https://github.com/imsuraj024/flutter_performance_monitor.git
 
