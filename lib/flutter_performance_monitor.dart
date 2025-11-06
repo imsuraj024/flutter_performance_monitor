@@ -1,5 +1,12 @@
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+
+library flutter_performance_monitor;
+
+export 'src/monitor.dart';
+export 'src/monitor_app.dart';
+export 'src/monitor_config.dart';
+export 'src/fps_monitor.dart';
+export 'src/performance_overlay.dart';
+export 'src/lifecycle_monitor.dart';
+export 'src/startup_monitor.dart';
+export 'src/logger.dart';
+

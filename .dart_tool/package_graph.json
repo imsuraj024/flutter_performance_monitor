@@ -7,7 +7,8 @@
       "name": "flutter_performance_monitor",
       "version": "0.0.1",
       "dependencies": [
-        "flutter"
+        "flutter",
+        "provider"
       ],
       "devDependencies": [
         "flutter_lints",
@@ -47,6 +48,15 @@
         "test_api",
         "vector_math",
         "vm_service"
+      ]
+    },
+    {
+      "name": "provider",
+      "version": "6.1.5",
+      "dependencies": [
+        "collection",
+        "flutter",
+        "nested"
       ]
     },
     {
@@ -222,6 +232,13 @@
         "stream_channel",
         "string_scanner",
         "term_glyph"
+      ]
+    },
+    {
+      "name": "nested",
+      "version": "1.0.0",
+      "dependencies": [
+        "flutter"
       ]
     },
     {
