@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'logger.dart';
 
 /// StartupMonitor - Optimized monitoring for app startup performance
 class StartupMonitor {
@@ -39,7 +38,7 @@ class StartupMonitor {
       _onWidgetsReady();
     });
     
-    log("Startup monitoring initialized", module: "STARTUP");
+    // log("Startup monitoring initialized", module: "STARTUP");
   }
 
   /// Called when first frame is rendered
@@ -51,10 +50,10 @@ class StartupMonitor {
       _timeToFirstFrame = _firstFrameTime!.difference(_appStartTime!);
       _determineStartupType();
       
-      log(
-        "First frame rendered in ${_timeToFirstFrame!.inMilliseconds}ms (${_startupType?.name})",
-        module: "STARTUP",
-      );
+      // log(
+      //   "First frame rendered in ${_timeToFirstFrame!.inMilliseconds}ms (${_startupType?.name})",
+      //   module: "STARTUP",
+      // );
     }
   }
 
@@ -69,10 +68,10 @@ class StartupMonitor {
       // Emit complete startup metrics
       _emitStartupMetrics();
       
-      log(
-        "Widgets ready in ${_timeToWidgetsReady!.inMilliseconds}ms",
-        module: "STARTUP",
-      );
+      // log(
+      //   "Widgets ready in ${_timeToWidgetsReady!.inMilliseconds}ms",
+      //   module: "STARTUP",
+      // );
     }
   }
 
@@ -115,16 +114,16 @@ class StartupMonitor {
     final firstFrame = metrics.timeToFirstFrame.inMilliseconds;
     final widgetsReady = metrics.timeToWidgetsReady.inMilliseconds;
     
-    log(
-      "Startup Complete - Type: $type, First Frame: ${firstFrame}ms, Widgets Ready: ${widgetsReady}ms",
-      module: "STARTUP",
-      level: metrics.startupType == StartupType.cold && firstFrame > 1000 ? 1000 : 900,
-    );
+    // log(
+    //   "Startup Complete - Type: $type, First Frame: ${firstFrame}ms, Widgets Ready: ${widgetsReady}ms",
+    //   module: "STARTUP",
+    //   level: metrics.startupType == StartupType.cold && firstFrame > 1000 ? 1000 : 900,
+    // );
   }
 
   /// Mark app as backgrounded (for warm startup detection)
   void markAppBackgrounded() {
-    log("App backgrounded - next startup will be warm", module: "STARTUP");
+    // log("App backgrounded - next startup will be warm", module: "STARTUP");
   }
 
   /// Reset for new startup measurement
@@ -136,7 +135,7 @@ class StartupMonitor {
     _timeToWidgetsReady = null;
     _startupType = null;
     
-    log("Startup monitor reset", module: "STARTUP");
+    // log("Startup monitor reset", module: "STARTUP");
   }
 
   /// Get current startup metrics

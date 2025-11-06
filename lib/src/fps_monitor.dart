@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:collection';
 import 'package:flutter/scheduler.dart';
-import 'logger.dart';
 
 /// FPSMonitor - Tracks frames per second with optimized average calculation
 class FPSMonitor {
@@ -32,14 +31,14 @@ class FPSMonitor {
     _startTime = DateTime.now();
     _initializeCleanup();
     SchedulerBinding.instance.scheduleFrameCallback(_onFrame);
-    log("FPSMonitor started", module: "FPS");
+    // log("FPSMonitor started", module: "FPS");
   }
 
   /// Stop monitoring FPS
   void stop() {
     _isRunning = false;
     _cleanupTimer.cancel();
-    log("FPSMonitor stopped", module: "FPS");
+    // log("FPSMonitor stopped", module: "FPS");
   }
 
   /// Initialize cleanup timer for memory optimization
@@ -82,8 +81,6 @@ class FPSMonitor {
       _frameCount = 0;
       _startTime = DateTime.now();
       
-      // Optimized logging with level-based filtering
-      _logFPSStatus(averageFPS);
     }
 
     SchedulerBinding.instance.scheduleFrameCallback(_onFrame);
@@ -103,15 +100,15 @@ class FPSMonitor {
   }
 
   /// Optimized logging with reduced string operations
-  void _logFPSStatus(double fps) {
-    if (fps >= 55) {
-      log("Avg FPS healthy: ${fps.toStringAsFixed(1)}", module: "FPS");
-    } else if (fps >= 30) {
-      log("Avg FPS warning: ${fps.toStringAsFixed(1)}", module: "FPS", level: 1000);
-    } else {
-      log("Avg FPS poor: ${fps.toStringAsFixed(1)}", module: "FPS", level: 1200);
-    }
-  }
+  // void _logFPSStatus(double fps) {
+  //   if (fps >= 55) {
+  //     log("Avg FPS healthy: ${fps.toStringAsFixed(1)}", module: "FPS");
+  //   } else if (fps >= 30) {
+  //     log("Avg FPS warning: ${fps.toStringAsFixed(1)}", module: "FPS", level: 1000);
+  //   } else {
+  //     log("Avg FPS poor: ${fps.toStringAsFixed(1)}", module: "FPS", level: 1200);
+  //   }
+  // }
 
   /// Reset average calculation
   void resetAverage() {

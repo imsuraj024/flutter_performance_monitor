@@ -5,8 +5,6 @@ import 'package:provider/provider.dart';
 void main() {
   runApp(
     MonitorApp(
-      enableFPS: true,
-      enableStartup: true, // Enable startup monitoring
       showComprehensiveOverlay: true, // Set to true for combined FPS+startup overlay
       child: const MyApp(),
     ),

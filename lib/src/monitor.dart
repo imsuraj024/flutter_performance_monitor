@@ -1,8 +1,6 @@
 import 'fps_monitor.dart';
-import 'lifecycle_monitor.dart';
 import 'startup_monitor.dart';
 import 'monitor_config.dart';
-import 'logger.dart';
 
 /// Monitor - Optimized singleton to manage all monitoring modules
 class Monitor {
@@ -10,7 +8,6 @@ class Monitor {
   Monitor._internal();
 
   FPSMonitor? _fpsMonitor;
-  LifecycleMonitor? _lifecycleMonitor;
   final MonitorConfig config = MonitorConfig();
 
   bool _isInitialized = false;
