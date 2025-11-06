@@ -69,19 +69,22 @@ class _MonitorAppState extends State<MonitorApp> {
   List<Widget> _buildPerformanceOverlays(MonitorConfig config) {
     final overlays = <Widget>[];
     
-    // Show comprehensive overlay if requested (combines FPS + startup)
-    if (widget.showComprehensiveOverlay && 
-        widget.enableFPS && 
-        widget.enableStartup &&
-        config.showPerformanceOverlay && 
-        Monitor.instance.fps != null) {
-      overlays.add(
-        ComprehensivePerformanceOverlay(
-          fpsMonitor: Monitor.instance.fps!,
-          startupMonitor: Monitor.instance.startup,
-        ),
-      );
-      return overlays;
+    // Only show overlays if performance overlay is enabled and FPS monitor exists
+    if (config.showPerformanceOverlay && Monitor.instance.fps != null) {
+      // Show comprehensive overlay if requested and advanced metrics enabled
+      if (widget.showComprehensiveOverlay && 
+          widget.enableFPS && 
+          widget.enableStartup
+          ) {
+        overlays.add(
+          ComprehensivePerformanceOverlay(
+            fpsMonitor: Monitor.instance.fps!,
+            startupMonitor: Monitor.instance.startup,
+            showAdvanceStats: config.enableAdvancedMetrics,
+          
+          ),
+        );
+      }
     }
     
     return overlays;

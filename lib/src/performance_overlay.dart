@@ -6,11 +6,13 @@ import 'startup_monitor.dart';
 class ComprehensivePerformanceOverlay extends StatelessWidget {
   final FPSMonitor fpsMonitor;
   final StartupMonitor startupMonitor;
+  final bool showAdvanceStats;
 
   const ComprehensivePerformanceOverlay({
     super.key,
     required this.fpsMonitor,
     required this.startupMonitor,
+    required this.showAdvanceStats,
   });
 
   @override
@@ -39,7 +41,9 @@ class ComprehensivePerformanceOverlay extends StatelessWidget {
                         color: Colors.black.withValues(alpha: 0.8),
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: Column(
+                      child: 
+                      showAdvanceStats ?
+                      Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -91,6 +95,29 @@ class ComprehensivePerformanceOverlay extends StatelessWidget {
                           ] else
                             _buildDetailRow("Status", "Measuring...", Colors.grey),
                         ],
+                      ) : Column(
+                        children:[
+                          Text(
+                  "${fps.toStringAsFixed(0)} FPS",
+                  style: TextStyle(
+                    color: _getFpsColor(fps),
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                            startupMetrics != null 
+                              ? "${startupMetrics!.timeToFirstFrame.inMilliseconds}ms"
+                              : "Measuring...",
+                            style: TextStyle(
+                              color: startupMetrics != null 
+                                ? _getStartupColor(startupMetrics!.startupType, startupMetrics!.timeToFirstFrame.inMilliseconds)
+                                : Colors.grey,
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ]
                       ),
                     );
                   },
